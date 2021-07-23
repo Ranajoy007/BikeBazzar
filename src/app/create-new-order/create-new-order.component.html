@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div>
+    <p>Select Brand you want to place order</p><br>
+    <select [(ngModel)]="selectedBrand"
+            (change)="getModel()">
+        <option selected
+                disabled
+                value="null">Select brand</option>
+        <option *ngFor="let eachData of cardata"
+                [ngValue]="eachData.name">{{eachData.name}}</option>
+    </select>
+    <br>
+    <br>
+    <ng-container *ngIf="selectedBrand">
+        <select [(ngModel)]="selectedModel">
+            <option selected
+                    disabled
+                    value="null">Select model</option>
+            <option *ngFor="let eachModel of allModels"
+                    [ngValue]="eachModel.modelId">{{eachModel.modelId}}</option>
+        </select>
+    </ng-container>
+</div>
+<div *ngIf="selectedBrand && selectedModel"
+     style="margin-top: 20px;margin-left: 8px; margin-right: 8px;">
+    <app-form-data (sendFname)="getFname($event)"
+                   (sendLname)="getLname($event)"></app-form-data>
+</div>
+<button (click)="pqr()">Submit</button>
+
+
+<div *ngIf="ifVisible; else elseBlock">
+    <p>{{fName}}</p><br>
+    <p>{{lName}}</p>
+</div>
+
+<ng-template #elseBlock>
+    <p *ngIf="selectedBrand && selectedModel">Please enter Firstname & Last Name both</p>
+</ng-template>

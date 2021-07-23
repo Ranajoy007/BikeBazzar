@@ -1,0 +1,20 @@
+<form>
+    <div class="row">
+        <div class="col">
+            <label style="margin-right: 10px;">First name</label>
+            <input type="text"
+                   name="fname"
+                   placeholder="First name"
+                   [(ngModel)]="fname"
+                   (change)="fnameChange()">
+        </div>
+        <div class="col">
+            <label style="margin-right: 10px;">Last name</label>
+            <input type="text"
+                   name="lname"
+                   placeholder="Last name"
+                   [(ngModel)]="lname"
+                   (change)="lnameChange()">
+        </div>
+    </div>
+</form>
